@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AboutController {
 
-    @RequestMapping(method = RequestMethod.GET, path = "/about", produces = MediaType.TEXT_PLAIN_VALUE)
+    @RequestMapping(method = RequestMethod.GET, path = "/about", produces = MediaType.APPLICATION_JSON_VALUE)
     public String about() {
-        return "TuxKart";
+        return "{\"name\":\"TuxKart\"}";
     }
 }

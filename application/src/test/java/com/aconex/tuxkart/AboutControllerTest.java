@@ -24,12 +24,12 @@ public class AboutControllerTest {
     @Test
     public void shouldGiveApplicationName() throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/about")
-                .header(HttpHeaders.ACCEPT, MediaType.TEXT_PLAIN_VALUE))
+                .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(MockMvcResultMatchers.status().is2xxSuccessful())
                 .andReturn();
 
         String applicationName = mvcResult.getResponse().getContentAsString();
 
-        Assert.assertThat(applicationName, is("TuxKart"));
+        Assert.assertThat(applicationName, is("{\"name\":\"TuxKart\"}"));
     }
 }
