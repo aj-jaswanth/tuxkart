@@ -4,10 +4,19 @@ buildscript {
     }
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+        classpath 'com.h2database:h2:1.4.191'
     }
     repositories {
         mavenCentral()
     }
+}
+plugins {
+    id "org.flywaydb.flyway" version "4.1.2"
+}
+
+flyway {
+    url = 'jdbc:h2:file:./target/tuxkart'
+    user = 'sa'
 }
 
 repositories {
@@ -24,9 +33,12 @@ targetCompatibility = 1.8
 dependencies {
     compile "org.springframework.boot:spring-boot-starter:$springBootVersion"
     compile "org.springframework.boot:spring-boot-starter-jetty:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
+    compile "com.h2database:h2"
     compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion") {
         exclude module: "spring-boot-starter-tomcat"
     }
+
 
     testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
 }
