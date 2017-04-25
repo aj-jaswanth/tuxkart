@@ -1,4 +1,4 @@
-package com.aconex.tuxkart;
+package com.aconex.tuxkart.controller;
 
 import org.junit.Assert;
 import org.junit.Test;
