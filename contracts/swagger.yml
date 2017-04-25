@@ -1,0 +1,39 @@
+swagger: "2.0"
+basePath: /
+info:
+  description: "This document represents contracts for Tuxkart application"
+  title: TuxKart
+  version: "1.0.0"
+schemes:
+  - http
+paths:
+  /products:
+    get:
+      description: "Get all products"
+      produces:
+        - application/vnd.tuxkart.products.v1+json
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Products"
+definitions:
+  Product:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+  Products:
+    type: object
+    properties:
+      products:
+        type: array
+        items:
+          $ref: "#/definitions/Product"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

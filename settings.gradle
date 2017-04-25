@@ -1,2 +1,3 @@
 include 'application'
 include 'functional-tests'
+include 'contracts'

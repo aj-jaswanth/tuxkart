@@ -1,0 +1,8 @@
+task installDependencies(type: Exec) {
+    executable = "yarn"
+}
+
+task validateContracts(type: Exec, dependsOn: [installDependencies]) {
+    executable = "node"
+    args = ["validate.js"]
+}

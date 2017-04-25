@@ -1,0 +1,7 @@
+{
+  "name": "TuxKart",
+  "description": "TuxKart Dev Dependencies",
+  "devDependencies": {
+    "js-yaml": "^3.8.3"
+  }
+}
