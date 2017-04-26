@@ -1,3 +1,4 @@
+package functionalTests
 import groovyx.net.http.RESTClient
 import spock.lang.Specification
 
@@ -5,37 +6,41 @@ import spock.lang.Specification
  * Created by swarup on 4/25/17.
  */
 class FirstTest extends Specification {
-
+    def client
+    def start(){
+        def env = System.getenv()
+        client = new RESTClient(env['TUXKART_URI'])
+    }
 
     def "The server should be up and listening for requests"() {
+        start()
         given: "A URI to test"
-            def env = "http://localhost:8080"
-            def client = new RESTClient(env)
         when: "accessing any page for the uri"
             def response = client.get(path: "/about")
         then: "response should always be OK"
-            response.getData().toString() == "{name=TuxKart}"
+            response.status == 200
+            response.getData()["name"] == "TuxKart"
     }
 
     def "as an admin I should be able to add products to the store"() {
+        start()
         given: "I have admin prvilege"
         when: "I add TV in store"
-        //def env = "https://localhost.com:8080"
-        //def client = new RESTClient(env)
-        //def response = client.post(path: "/add_product", body: "tv")
+      //  client.parser.'application/vnd.tuxkart.products.v1+json' = client.parser.'application/json'
+      //  def response = client.post(path: "/add_product", body: "tv")
         then: "the store should display the newly added TV"
-        //response.getData().toString().contain("TV")
+      //      response.getData().toString().contain("TV")
 
     }
 
 
     def "as an CX I should be able to see the available products in the store"() {
+        start()
         given: "The app has TV in inventory"
         when: "I access the URI"
-        //def env = "https://localhost.com:8080"
-        //def client = new RESTClient(env)
-        //def response = client.get(path: "/product_list")
+            client.parser.'application/vnd.tuxkart.products.v1+json' = client.parser.'application/json'
+            def response = client.get(path: "/products" , contentType:groovyx.net.http.ContentType.ANY)
         then: "the store should display the TV"
-        //response.getData().toString().contain("TV")
+            response.getData()["products"] == null
     }
 }

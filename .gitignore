@@ -5,3 +5,5 @@
 *.ipr
 build
 node_modules
+.testpackage
+target
