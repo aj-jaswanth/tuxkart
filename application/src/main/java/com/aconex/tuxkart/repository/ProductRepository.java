@@ -1,12 +1,15 @@
 package com.aconex.tuxkart.repository;
 
-import com.aconex.tuxkart.representation.Product;
+import com.aconex.tuxkart.model.Product;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class ProductRepository {
+import java.util.List;
 
-    public Product[] getAllProducts() {
-        return null;
-    }
+@Repository
+public interface ProductRepository extends CrudRepository<Product, Integer> {
+
+    List<Product> findAll();
+
+    Product save(Product product);
 }

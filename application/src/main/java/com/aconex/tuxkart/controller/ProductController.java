@@ -23,6 +23,6 @@ public class ProductController {
     @GetMapping(produces = MediaTypes.PRODUCTS_V1)
     @ResponseBody
     public Products products() {
-        return new Products(productRepository.getAllProducts());
+        return new Products(productRepository.findAll());
     }
 }
