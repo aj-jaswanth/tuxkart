@@ -1,5 +1,5 @@
-TuxKart Project
-===============
+# TuxKart Project [![Build Status](https://travis-ci.org/aj-jaswanth/tuxkart.svg?branch=master)](https://travis-ci.org/aj-jaswanth/tuxkart)
+
 
 OpenSource E-commerce project!
 
